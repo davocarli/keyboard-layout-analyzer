@@ -118,7 +118,7 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "        <li>Number of layouts in the comparison changed from 5 to 6.</li>\n" +
     "        <li>Removed the generated 'Personalized Layout' as I considered it to not really have any value.</li>\n" +
     "        <li>Added support for additional keyboard types.</li>\n" +
-    "        <li>Various other input texts have been added, these were obtained from shenafu's fork of the same app.</li>\n" +
+    "        <li>Various other input texts have been added, these were obtained from from <a href=\"https://bitbucket.org/Shenafu/keyboard-layout-analyzer/src/master/\">shenafu's fork</a> of the same app.</li>\n" +
     "        <li>Disabled the API functionality (e.g. link to results) as github hosting does not support php.</li>\n" +
     "    </ul>\n" +
     "\n" +
@@ -458,10 +458,6 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "            <div class='controls'>\n" +
     "                <button class=\"btn btn-large\" type=\"button\" ng-click=\"generateOutput(data.text)\">See Which Layout is Best</button>\n" +
     "            </div>\n" +
-    "        </div>\n" +
-    "        <div>\n" +
-    "            <br/>\n" +
-    "            <p>Preset source texts are from <a href=\"https://github.com/patorjk/keyboard-layout-analyzer\">patorjk's original repo</a> and from <a href=\"https://bitbucket.org/Shenafu/keyboard-layout-analyzer/src/master/\">shenafu's fork</a>.</p>\n" +
     "        </div>\n" +
     "    </form>\n" +
     "</div>\n"
