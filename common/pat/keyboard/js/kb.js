@@ -234,6 +234,7 @@ KB.glyphLayouts.european[KB.SHIFT_ALTGR_PUSH] = function(keyCode,fontSize,coords
     };
 };
 
+KB.glyphLayouts.european_ss = KB.glyphLayouts.european;
 
 KB.glyphLayouts.matrix = {};
 KB.glyphLayouts.matrix.getCoords = function(id, type, keyCode, fontSize, coords) {

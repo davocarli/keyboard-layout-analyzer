@@ -1,5 +1,5 @@
 {
-    "label": "Colemak DH (Mod-DH) split-space",
+    "label": "Colemak DH (Mod-DH) split-space symbols",
     "author": "SteveP",
     "moreInfoUrl": "https://colemakmods.github.io/mod-dh/",
     "moreInfoText": "Colemak Mod-DH",
@@ -17,7 +17,7 @@
         "11": 57,
         "false": -1
     },
-    "keyboardType": "european",
+    "keyboardType": "european_ss",
     "keys": [
         {
             "primary": 96,
@@ -28,96 +28,96 @@
             "shiftAltGr": -1
         },
         {
-            "primary": 49,
-            "shift": 33,
+            "primary": -1,
+            "shift": -1,
             "finger": 1,
             "id": 1,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 50,
-            "shift": 34,
+            "primary": -1,
+            "shift": -1,
             "finger": 2,
             "id": 2,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 51,
-            "shift": 163,
+            "primary": -1,
+            "shift": -1,
             "finger": 3,
             "id": 3,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 52,
-            "shift": 36,
+            "primary": -1,
+            "shift": -1,
             "finger": 3,
             "id": 4,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 53,
-            "shift": 37,
+            "primary": -1,
+            "shift": -1,
             "finger": 4,
             "id": 5,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 54,
-            "shift": 94,
+            "primary": -1,
+            "shift": -1,
             "finger": 4,
             "id": 6,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 55,
-            "shift": 38,
+            "primary": -1,
+            "shift": -1,
             "finger": 7,
             "id": 7,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 56,
-            "shift": 42,
+            "primary": -1,
+            "shift": -1,
             "finger": 8,
             "id": 8,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 57,
-            "shift": 40,
+            "primary": -1,
+            "shift": -1,
             "finger": 9,
             "id": 9,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 48,
-            "shift": 41,
+            "primary": -1,
+            "shift": -1,
             "finger": 10,
             "id": 10,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 45,
-            "shift": 95,
+            "primary": -1,
+            "shift": -1,
             "finger": 10,
             "id": 11,
             "altGr": -1,
             "shiftAltGr": -1
         },
         {
-            "primary": 61,
-            "shift": 43,
+            "primary": -1,
+            "shift": -1,
             "finger": 10,
             "id": 12,
             "altGr": -1,
@@ -217,16 +217,16 @@
             "shiftAltGr": -1
         },
         {
-            "primary": 91,
-            "shift": 123,
+            "primary": -1,
+            "shift": -1,
             "finger": 10,
             "id": 25,
             "altGr": 171,
             "shiftAltGr": -1
         },
         {
-            "primary": 93,
-            "shift": 125,
+            "primary": -1,
+            "shift": -1,
             "finger": 10,
             "id": 26,
             "altGr": 187,
@@ -286,8 +286,8 @@
             "shiftAltGr": -1
         },
         {
-            "primary": 107,
-            "shift": 75,
+            "primary": 109,
+            "shift": 77,
             "finger": 7,
             "id": 34,
             "altGr": 42,
@@ -395,8 +395,8 @@
             "shiftAltGr": -1
         },
         {
-            "primary": 109,
-            "shift": 77,
+            "primary": 107,
+            "shift": 75,
             "finger": 7,
             "id": 48,
             "altGr": 48,

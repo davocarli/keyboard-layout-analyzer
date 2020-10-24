@@ -216,7 +216,6 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                                                <option value=\"standard.carpalxq\">CarpalxQ</option>\n" +
     "                                                <option value=\"standard.colemak\">Colemak</option>\n" +
     "                                                <option value=\"standard.colemak_dh\">Colemak-DH (Mod-DH)</option>\n" +
-    "                                                <option value=\"standard.colemak_dhm\">Colemak-DHm (Mod-DH)</option>\n" +
     "                                                <option value=\"standard.tarmak1\">Colemak - Tarmak 1</option>\n" +
     "                                                <option value=\"standard.tarmak2\">Colemak - Tarmak 2</option>\n" +
     "                                                <option value=\"standard.tarmak3\">Colemak - Tarmak 3</option>\n" +
@@ -249,8 +248,7 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                                                <option value=\"european.colemak\">Colemak</option>\n" +
     "                                                <option value=\"european_ss.colemak\">Colemak split-space</option>\n" +
     "                                                <option value=\"european.colemak_dh\">Colemak-DH (Mod-DH)</option>\n" +
-    "                                                <option value=\"european_ss.colemak_dh\">Colemak-DH (Mod-DH) split-space</option>\n" +
-    "                                                <option value=\"european.colemak_dhm\">Colemak-DHm (Mod-DH)</option>\n" +
+    "                                                <option value=\"european_ss.colemak_dh\">Colemak-DH split-space</option>\n" +
     "                                                <option value=\"european.qwerty\">QWERTY</option>\n" +
     "                                                <option value=\"european_ss.qwerty\">QWERTY split-space</option>\n" +
     "                                                <option value=\"european.qwerty-spanish\">QWERTY (Spanish)</option>\n" +
