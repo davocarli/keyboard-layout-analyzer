@@ -555,6 +555,14 @@ KB.keyMap.european_ss.s683_225.split = false;
             km[index].cy = km[index].y + (km[index].h/2);
             km[index].row = row;
             
+            // make centre of spacebars near the edges?
+            if (row === 4 && ii === 3) { //l.space
+                km[index].cx = km[index].x + normKeySize;
+            }
+            if (row === 4 && ii === 4) { //r.space
+                km[index].cx = km[index].x + km[index].w - normKeySize;
+            }
+            
             if (row === 1 && ii === 13) {
                 var enterBottomWidth = 62.5;//keyWidths["3,0"]+12*normKeySize;
             
