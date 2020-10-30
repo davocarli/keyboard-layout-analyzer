@@ -1169,7 +1169,7 @@ KB.keySet.european.colemak_dh = {
         {
             "primary": 57,
             "shift": 40,
-            "finger": 9,
+            "finger": 8,
             "id": 9,
             "altGr": -1,
             "shiftAltGr": -1
@@ -1177,7 +1177,7 @@ KB.keySet.european.colemak_dh = {
         {
             "primary": 48,
             "shift": 41,
-            "finger": 10,
+            "finger": 9,
             "id": 10,
             "altGr": -1,
             "shiftAltGr": -1

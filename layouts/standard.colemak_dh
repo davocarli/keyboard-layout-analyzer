@@ -46,7 +46,7 @@
         {
             "primary": 52,
             "shift": 36,
-            "finger": 4,
+            "finger": 3,
             "id": 4
         },
         {
@@ -58,7 +58,7 @@
         {
             "primary": 54,
             "shift": 94,
-            "finger": 7,
+            "finger": 4,
             "id": 6
         },
         {
@@ -76,13 +76,13 @@
         {
             "primary": 57,
             "shift": 40,
-            "finger": 9,
+            "finger": 8,
             "id": 9
         },
         {
             "primary": 48,
             "shift": 41,
-            "finger": 10,
+            "finger": 9,
             "id": 10
         },
         {
