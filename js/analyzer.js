@@ -465,6 +465,12 @@ KLA.Analyzer = (function() {
         return dist; 
     }
 
+    function hardwareType(keyboardType) {
+        if (keyboardType == 'standard') return 'ansi'
+        else if (keyboardType == 'european') return 'iso'
+        else return keyboardType
+    }
+
     /*
         config.keyMap
         config.keySet
@@ -595,6 +601,7 @@ KLA.Analyzer = (function() {
         
         analysis.pixelsPerCm = keyMap.pixelsPerCm;
         analysis.layoutName = keySet.label;
+        analysis.hardwareType = hardwareType(keySet.keyboardType);
         
         for (finger in KB.fingers) {
             fingerLabel = KB.fingers[finger];
@@ -701,6 +708,7 @@ KLA.Analyzer = (function() {
         for (ii = 0; ii < len; ii++) {
             results.finalList[ii] = {};
             results.finalList[ii].layoutName = analysis[ii].layoutName;
+            results.finalList[ii].hardwareType = analysis[ii].hardwareType;
             results.finalList[ii].score = 
                 (results.consecHandScores[ii] * consecHandWeight) +
                 (results.consecFingerScores[ii] * consecFingerWeight) +

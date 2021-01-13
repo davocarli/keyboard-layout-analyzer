@@ -31,6 +31,9 @@
                                 <th width="20px">
                                 </th>
                                 <th>
+                                    <div class='text-left'>Type</div>
+                                </th>
+                                <th>
                                     <div class='text-left'>Layout</div>
                                 </th>
                                 <th>
@@ -41,9 +44,10 @@
                         <tbody>
     
                             <tr ng-repeat="layout in results.summary.rankedLayouts" >
-                                <td ><div class='text-right'>#{{$index + 1}}</div></td>
+                                <td><div class='text-right'>#{{$index + 1}}</div></td>
                                 <td></td>
-                                <td ><div class='text-left'>{{layout.layoutName}}</div></td>
+                                <td><div class='text-left'>{{layout.hardwareType}}</div></td>
+                                <td><div class='text-left'>{{layout.layoutName}}</div></td>
                                 <td><div class='text-right'>{{layout.score.toFixed(2)}}</div></td>
                             </tr>
                     
@@ -53,8 +57,8 @@
                 </div>
             </p>
             <p>
-                The layout score is based on a weighed calculation that factors in the 
-                distance your fingers moved (50%), 
+                The layout score is based on a weighed calculation that factors in
+                a distance penalty due to how much your fingers moved (50%), 
                 how often you use particular fingers (20%),
                 and how often you switch fingers while typing (30%).
                 See the About page for detailed information.

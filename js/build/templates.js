@@ -579,6 +579,9 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                                <th width=\"20px\">\n" +
     "                                </th>\n" +
     "                                <th>\n" +
+    "                                    <div class='text-left'>Type</div>\n" +
+    "                                </th>\n" +
+    "                                <th>\n" +
     "                                    <div class='text-left'>Layout</div>\n" +
     "                                </th>\n" +
     "                                <th>\n" +
@@ -589,9 +592,10 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                        <tbody>\n" +
     "    \n" +
     "                            <tr ng-repeat=\"layout in results.summary.rankedLayouts\" >\n" +
-    "                                <td ><div class='text-right'>#{{$index + 1}}</div></td>\n" +
+    "                                <td><div class='text-right'>#{{$index + 1}}</div></td>\n" +
     "                                <td></td>\n" +
-    "                                <td ><div class='text-left'>{{layout.layoutName}}</div></td>\n" +
+    "                                <td><div class='text-left'>{{layout.hardwareType}}</div></td>\n" +
+    "                                <td><div class='text-left'>{{layout.layoutName}}</div></td>\n" +
     "                                <td><div class='text-right'>{{layout.score.toFixed(2)}}</div></td>\n" +
     "                            </tr>\n" +
     "                    \n" +
@@ -601,8 +605,8 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                </div>\n" +
     "            </p>\n" +
     "            <p>\n" +
-    "                The layout score is based on a weighed calculation that factors in the \n" +
-    "                distance your fingers moved (50%), \n" +
+    "                The layout score is based on a weighed calculation that factors in\n" +
+    "                a distance penalty due to how much your fingers moved (50%), \n" +
     "                how often you use particular fingers (20%),\n" +
     "                and how often you switch fingers while typing (30%).\n" +
     "                See the About page for detailed information.\n" +
