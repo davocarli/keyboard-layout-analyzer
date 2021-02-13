@@ -215,11 +215,15 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                                                <option value=\"standard.capewell\">Capewell</option>\n" +
     "                                                <option value=\"standard.carpalxq\">CarpalxQ</option>\n" +
     "                                                <option value=\"standard.colemak\">Colemak</option>\n" +
-    "                                                <option value=\"standard.colemak_dh\">Colemak-DH (Mod-DH)</option>\n" +
     "                                                <option value=\"standard.tarmak1\">Colemak - Tarmak 1</option>\n" +
     "                                                <option value=\"standard.tarmak2\">Colemak - Tarmak 2</option>\n" +
     "                                                <option value=\"standard.tarmak3\">Colemak - Tarmak 3</option>\n" +
     "                                                <option value=\"standard.tarmak4\">Colemak - Tarmak 4</option>\n" +
+    "                                                <option value=\"standard.colemak_dh\">Colemak-DH (Mod-DH)</option>\n" +
+    "                                                <option value=\"standard.tarmak1_dh\">Colemak-DH - Tarmak 1</option>\n" +
+    "                                                <option value=\"standard.tarmak2_dh\">Colemak-DH - Tarmak 2</option>\n" +
+    "                                                <option value=\"standard.tarmak3_dh\">Colemak-DH - Tarmak 3</option>\n" +
+    "                                                <option value=\"standard.tarmak4_dh\">Colemak-DH - Tarmak 4</option>\n" +
     "                                                <option value=\"standard.simplifiedDvorak\">Dvorak (Simplified)</option>\n" +
     "                                                <option value=\"standard.programmerDvorak\">Dvorak (Programmer)</option>\n" +
     "                                                <option value=\"standard.spanish-dvorak\">Dvorak (Spanish)</option>\n" +
@@ -249,6 +253,10 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                                                <option value=\"european_ss.colemak\">Colemak split-space</option>\n" +
     "                                                <option value=\"european.colemak_dh\">Colemak-DH (Mod-DH)</option>\n" +
     "                                                <option value=\"european_ss.colemak_dh\">Colemak-DH (Mod-DH) split-space</option>\n" +
+    "                                                <option value=\"european.tarmak1_dh\">Colemak-DH - Tarmak 1</option>\n" +
+    "                                                <option value=\"european.tarmak2_dh\">Colemak-DH - Tarmak 2</option>\n" +
+    "                                                <option value=\"european.tarmak3_dh\">Colemak-DH - Tarmak 3</option>\n" +
+    "                                                <option value=\"european.tarmak4_dh\">Colemak-DH - Tarmak 4</option>\n" +
     "                                                <option value=\"european.qwerty\">QWERTY</option>\n" +
     "                                                <option value=\"european_ss.qwerty\">QWERTY split-space</option>\n" +
     "                                                <option value=\"european.qwerty-spanish\">QWERTY (Spanish)</option>\n" +
@@ -257,7 +265,7 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                                            <optgroup label=\"Matrix Keyboards\">\n" +
     "                                                <option value=\"matrix.qwerty\">QWERTY</option>\n" +
     "                                                <option value=\"matrix.colemak\">Colemak</option>\n" +
-    "                                                <option value=\"matrix.colemak_dhm\">Colemak-DHm (Mod-DH)</option>\n" +
+    "                                                <option value=\"matrix.colemak_dh\">Colemak-DH (Mod-DH)</option>\n" +
     "                                                <option value=\"matrix.dvorak\">Dvorak</option>\n" +
     "                                                <option value=\"matrix.norman\">Norman</option>\n" +
     "                                                <option value=\"matrix.workman\">Workman</option>\n" +
@@ -265,7 +273,7 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                                            <optgroup label=\"Ergodox Keyboards\">\n" +
     "                                                <option value=\"ergodox.colemak\">Colemak</option>\n" +
     "                                                <option value=\"ergodox.colemak-thumbshift\">Colemak thumbshift</option>\n" +
-    "                                                <option value=\"ergodox.colemak_dhm\">Colemak-DHm (Mod-DH) thumbshift</option>\n" +
+    "                                                <option value=\"ergodox.colemak_dh\">Colemak-DH (Mod-DH) thumbshift</option>\n" +
     "                                                <option value=\"ergodox.maltron\">Maltron</option>\n" +
     "                                                <option value=\"ergodox.mtgap\">MTGAP</option>\n" +
     "                                                <option value=\"ergodox.mtgap-thumbshift\">MTGAP thumbshift</option>\n" +
