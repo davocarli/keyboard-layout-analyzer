@@ -17,7 +17,7 @@
         <div class='control-group'>
             <label class='control-label' for='text-presets'>Text Presets:</label>
             <div class='controls'>
-                <select id='text-presets' ng-model='data.textPreset'>
+                <select id='text-presets' ng-model='data.textPreset' ng-change="applyPreset()">
                     <option value='' selected>[Select Text to Load]</option>
                     <option value='alice-ch1' selected>English: Alice in Wonderland, Chapter 1</option>
                     <option value='common-english-words'>English: List of the most commonly used words</option>
@@ -39,7 +39,7 @@
                     <option value='pi1000'>Tech: Pi 1000</option>
                     <option value='pptt'>Tech: Programming Punctuation Torture Test</option>
                 </select>
-                <button class='btn' type='button' ng-click='applyPreset()'>Apply</button>
+                <!-- <button class='btn' type='button' ng-click='applyPreset()'>Apply</button> -->
             </div>
         </div>
         <div class='control-group'>

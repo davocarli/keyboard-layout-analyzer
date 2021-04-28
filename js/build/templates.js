@@ -30,57 +30,90 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "        - same-finger bigrams (17%)<br/>\n" +
     "        - hand alternation (17%)<br/>\n" +
     "    </p>\n" +
-    "    <p>I now present a critique of each of these elements, and where appropriate, describe the changes I have made in this version of the app:</p>\n" +
+    "    <p>I now present a critique of each of these elements, and where relevant, describe the changes I have made in this version of the app:</p>\n" +
     "    \n" +
     "    <h3>Element 1: Distance calculation</h3>\n" +
     "\n" +
-    "    <p>The distance calculation works by simulating the typing of the input text and measuring the distance between successive keys. These distances are summed up, and a score is calculated based on the average distance moved across all key presses. This method works well for the most part, but I have identified a couple of flaws:<br/>\n" +
+    "    <p>The distance calculation works by simulating the typing of the input text and measuring the distance between successive keys. These distances are summed up, and a score is calculated based on the average distance moved across all key presses. This method works reasonably well but is overly simplistic. I have identified three flaws with it:<br/>\n" +
     "    </p>\n" +
-    "    <p><b>Flaw 1</b>: no consideration is taken into account of the type of movement</p>\n" +
+    "    <p><b>Flaw 1</b>: no consideration is taken into account of the type of movement.</p>\n" +
+    "\n" +
+    "    <img src=\"./img/kb-j-arrows.png\" width=\"142\" height=\"150\" style=\"float: left; margin-right: 10px;\"/>\n" +
+    "\n" +
     "    <p>Consider if you start with your right hand in the home position (using Qwerty), and type JH, JU, and JM. It is more difficult to move from J to H than it is from J to U or J to H. This is because the index finger can easily stretch outward to the U or curl inward to the M. However, to type the H, the finger has to splay outwards, or the whole hand has to move. Consequently, more effort is required for this type of lateral motion. This phenomenon is well-documented in the justification behind both the Workman and Colemak-DH layouts.</p>\n" +
-    "    <p>If you simply measure distance between J and its nearby keys however, then due to the keyboard stagger, JH is a shorter distance than JU or JM. In such cases, the default algorithm rewards motions involving more difficult (but slightly nearer) keys, as shown in the table below. What would be desired to fix this problem, is to replace the pure distance measure with a distance penalty, in which horizontal movements are given a higher penalty than vertical ones for the same distance moved.</p>\n" +
-    "    <p><b>Flaw 2</b>: Even with a directional penalty added, notice that the distance between JM and JN is the same. In reality though, again because of the stagger on standard boards, the JM movement is easier. To fix this issue, we need to consider that the hands approach the keyboard at an angle. On the right-hand side of the keyboard, the arms approach the keyboard in the same direction as the stagger, but on the left-side, the stagger is effectively the wrong way around. I'd argue that a complete and accurate algorithm should take this effect into account.</p>\n" +
     "\n" +
-    "    <p><b><u>Fix:</u></b> This version of the app applies fixes to the algorithm to address these two flaws.<br/>\n" +
-    "    - The simple distance calculation is replaced by a \"distance penalty\". This is identical to the distance travelled for vertical movements, but a factor of 1.5 (i.e. a 50% penalty) is introduced for horizontal components of each movement.<br/>\n" +
-    "    - The coordinate system for movement vectors is rotated to align with the angle of approach of the hands. This currently set to a 15° angle, and is applied clockwise for the left hand, anticlockwise for the right hand.<br/>\n" +
-    "    <p>This element of the scoring system is now more highly prioritised too, increasing from 33% to 50%.</p>\n" +
+    "    <p>If you simply measure distance between J and its nearby keys however, then due to the keyboard stagger, JH is a shorter distance than JU or JM. In such cases, the default algorithm rewards motions involving more difficult (but slightly nearer) keys. What would be desired to fix this problem, is to replace the pure distance measure with a distance penalty, in which horizontal movements are given a higher penalty than vertical ones for the same distance moved.</p>\n" +
     "\n" +
-    "    <table>\n" +
-    "    <tr>\n" +
-    "    <td>\n" +
-    "        <img src=\"./img/kb-j-arrows.png\" class=\".center\"/>\n" +
-    "    </td>\n" +
-    "    <td>\n" +
+    "    <p>Also, the raw distance measurement does not take into account that some fingers are stronger than others, especially for motions that involve simple curling inward/outward that don't require the whole hand to move.</p>\n" +
+    "\n" +
+    "    <p><b>Flaw 2</b>: Even with a directional penalty added, notice that the distance between JM and JN is the same. In reality though, again because of the stagger on standard boards, the JM movement is easier. To address this issue, we need to consider that the hands approach the keyboard at an angle. On the right-hand side of the keyboard, the arms approach the keyboard in the same direction as the stagger, but on the left-side, the stagger is effectively the wrong way around. A more accurate algorithm should aim to take this effect into account.</p>\n" +
+    "\n" +
+    "    <p><b>Flaw 3</b>: The distance penalty should not linear, but rather logarithmic, as observed by <a href=\"https://en.wikipedia.org/wiki/Fitts%27s_law\">Fitts's Law</a>.\n" +
+    "    Fitts's Law is a predictive model of human movement which can be used to estimate the time or effort it takes to perform a variety of actions, based on the distance and size of the target.</p>\n" +
+    "\n" +
+    "    <p><b><u>Fixes:</u></b> This version of the app applies fixes to the algorithm to address all these flaws.<br/>\n" +
+    "        - The simple distance calculation is replaced by a \"distance penalty\".<br/> \n" +
+    "        - The penalty is finger-dependent for actions that require a simple inward/outward curling of the finger, for example to reach upward with the middle finger from <i>K to I</i> (in Qwerty).<br/>\n" +
+    "        - The penalty is larger for horizontal movements, recognising that this component requires the whole hand to move or for fingers to splay out awkwardly, for example the motion of the index finger from <i>F to G</i> (in Qwerty).<br/>\n" +
+    "        - The coordinate system for movement vectors is rotated to align with the angle of approach of the hands. This currently set to a 10° angle, and is applied clockwise for the left hand, anticlockwise for the right hand.<br/>\n" +
+    "        - Fitts's Law is incorporated in this version of the analyzer so both horizontal and vertical components are appropriately scaled.</p>\n" +
+    "\n" +
+    "    <table style=\"display: inline-block; margin-left:40px\" border=\"1\" cellpadding=\"2\">\n" +
+    "        <tbody>\n" +
+    "        <tr><th>finger</th><th>effort</th></tr>\n" +
+    "        <tr>\n" +
+    "            <td>index¹</td><td>1.0</td>\n" +
+    "        </tr>\n" +
+    "        <tr>\n" +
+    "            <td>middle¹</td><td>1.1</td>\n" +
+    "        </tr>\n" +
+    "        <tr>\n" +
+    "            <td>ring¹</td><td>1.3</td>\n" +
+    "        </tr>\n" +
+    "        <tr>\n" +
+    "            <td>pinky¹</td><td>1.6</td>\n" +
+    "        </tr>\n" +
+    "        <tr>\n" +
+    "            <td>horizontal motions²</td><td>2.0</td>\n" +
+    "        </tr>\n" +
+    "        <td colspan=\"2\">\n" +
+    "            ¹ Relative effort for vertical finger curling motion.<br/>\n" +
+    "            ² Relative effort for whole hand horizontal motion.\n" +
+    "            </td>\n" +
+    "        </tbody>\n" +
+    "    </table>\n" +
+    "\n" +
+    "    <!--\n" +
+    "    <p>The effect of the new distance penalty model compared to the raw physical distance:</p>\n" +
+    "    \n" +
     "    <table style=\"display: inline-block; margin-left:40px\" border=\"1\" cellpadding=\"2\">\n" +
     "        <tbody>\n" +
     "        <tr><th>keys</th><th>distance¹</th><th>penalty²</th></tr>\n" +
     "        <tr>\n" +
-    "        <td>JU</td><td>1.03u</td><td>1.03</td>\n" +
+    "        <td>JU</td><td>1.03u</td><td>1.04</td>\n" +
     "        </tr>\n" +
     "        <tr>\n" +
-    "        <td>JH</td><td>1.00u</td><td>1.47</td>\n" +
+    "        <td>JH</td><td>1.00u</td><td>1.99</td>\n" +
     "        </tr>\n" +
     "        <tr>\n" +
-    "        <td>JN</td><td>1.12u</td><td>1.35</td>\n" +
+    "        <td>JN</td><td>1.12u</td><td>1.74</td>\n" +
     "        </tr>\n" +
     "        <tr>\n" +
-    "        <td>JM</td><td>1.12u</td><td>1.17</td>\n" +
+    "        <td>JM</td><td>1.12u</td><td>1.32</td>\n" +
     "        </tr>\n" +
     "        </tbody>\n" +
     "        <tfoot>\n" +
     "        <tr>\n" +
     "        <td colspan=\"3\">\n" +
     "        ¹ Actual physical distance in key units<br/>\n" +
-    "        ² Distance penalty as calculated in this version of the app by applying the two fixes.\n" +
+    "        ² Distance penalty as calculated in this version of the app by applying the fixes.\n" +
     "        </td>\n" +
     "        </tr>\n" +
     "        </tfoot>\n" +
     "    </table>    \n" +
-    "    </td>\n" +
-    "    </tr>\n" +
-    "    </table>\n" +
-    "\n" +
+    "    -->\n" +
+    "    <p>With these fixes, this element of the scoring system is now more highly prioritised, increasing from 33% to 50%.</p>\n" +
+    "            \n" +
     "    <h3>Element 2: Finger distribution</h3>\n" +
     "\n" +
     "    <p>The original algorithm defines a score value for each finger as follows:<br/>\n" +
@@ -93,17 +126,15 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "    <p>Then, it calculates what proportion of typing is done on each finger, subject to a maximum of 20% per finger. The final score is proportional to this sum over all fingers:\n" +
     "    (finger-score) x (finger-frequency)</p>\n" +
     "    <p>The consequence of this algorithm is that middle finger is heavily favoured, even compared to the index finger. Layouts deemed high scoring would be those that assign 20% of the work to favoured fingers - middle especially followed by index - but with very little or none on pinkies and thumbs. I think this method may be flawed in that it too heavily weights the middle finger, and encourages loading of favoured fingers upto the seemingly arbitrary 20%. However, I accept that this element of the algorithm may in fact be counter-balanced by the distance algorithm, which would reward all home key usage (including pinkies and thumbs where defined), by assigning a movement distance of zero in those cases.</p>\n" +
-    "    <p><b><u>Fix:</u></b> I think further work is needed on this element of the algorithm, but for the time being, I have rebalanced the finger weights to these values:<br/>\n" +
-    "        PINKY: 0.5<br/>\n" +
-    "        RING: 1.0<br/>\n" +
-    "        MIDDLE: 2.0<br/>\n" +
-    "        INDEX: 2.0<br/>\n" +
-    "        THUMB: 1.0<br/>\n" +
-    "    </p>\n" +
-    "    <p>I also reduce the weighting of this element of the scoring from 33% to 20%.</p>\n" +
+    "\n" +
+    "    <p><b><u>Fix:</u></b> A simpler effort calculation is employed based on the finger weightings in the table above, representing the relative strength of each finger.\n" +
+    "        Additionally, a small finger-imbalance factor has been introduced to this element, recognising that a good layout should assign rougly equal work symmetrically to fingers of both left and right hands. \n" +
+    "        That is, if the left-index finger performs 15% of key presses, the right-index finger should do similarly.</p>\n" +
+    "\n" +
+    "    <p>I have reduced the weighting of this element of the scoring from 33% to 20%.</p>\n" +
     "    \n" +
     "    <h3>Element 3: Same-finger bigrams</h3>\n" +
-    "    <p>The original app simply counts what proportion of each key presses and done with the same finger as the previous one. It then calculates a percentage score based on the same-finger ratio in the range 0 to 10%. In other worlds, a layouts with a 5% same-finger ratio, would score 50% in this element.</p>\n" +
+    "    <p>The original app simply counts what proportion of each key presses and done with the same finger as the previous one. It then calculates a percentage score based on the same-finger ratio in the range 0 to 10%. In other worlds, a layout with a 5% same-finger ratio, would score 50% in this element.</p>\n" +
     "    <p><b><u>Fix:</u></b> No fix needed. The weighting of this element of the calculation is increased from 17% to 30%.<br/>\n" +
     "\n" +
     "    <h3>Element 4: Hand alternation</h3>\n" +
@@ -435,7 +466,7 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "        <div class='control-group'>\n" +
     "            <label class='control-label' for='text-presets'>Text Presets:</label>\n" +
     "            <div class='controls'>\n" +
-    "                <select id='text-presets' ng-model='data.textPreset'>\n" +
+    "                <select id='text-presets' ng-model='data.textPreset' ng-change=\"applyPreset()\">\n" +
     "                    <option value='' selected>[Select Text to Load]</option>\n" +
     "                    <option value='alice-ch1' selected>English: Alice in Wonderland, Chapter 1</option>\n" +
     "                    <option value='common-english-words'>English: List of the most commonly used words</option>\n" +
@@ -457,7 +488,7 @@ angular.module('kla').run(['$templateCache', function($templateCache) {
     "                    <option value='pi1000'>Tech: Pi 1000</option>\n" +
     "                    <option value='pptt'>Tech: Programming Punctuation Torture Test</option>\n" +
     "                </select>\n" +
-    "                <button class='btn' type='button' ng-click='applyPreset()'>Apply</button>\n" +
+    "                <!-- <button class='btn' type='button' ng-click='applyPreset()'>Apply</button> -->\n" +
     "            </div>\n" +
     "        </div>\n" +
     "        <div class='control-group'>\n" +

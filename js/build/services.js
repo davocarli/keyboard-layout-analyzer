@@ -589,12 +589,12 @@ appServices.factory('resultsGenerator', ['$log', 'keyboards', 'analyzer', 'libra
 
 
             var seriesColors = [
-                'rgb(42, 66, 105)',
-                'rgb(56, 88, 142)',
-                'rgb(71, 111, 178)',
-                'rgb(105, 139, 195)',
-                'rgb(141, 167, 210)',
-                'rgb(178, 195, 224)'
+                'rgb(66, 98, 152)',
+                'rgb(81, 121, 218)',
+                'rgb(42, 166, 105)',
+                'rgb(157, 210, 131)',
+                'rgb(195, 105, 139)',
+                'rgb(214, 185, 158)'
             ];
             var distSeriesData = [];
             var fuSeriesData = [];
@@ -862,8 +862,8 @@ appServices.factory('resultsGenerator', ['$log', 'keyboards', 'analyzer', 'libra
                 displayFilter: displayFilter,
                 displayType: 'All',
                 displayData: displayData,
-                units: 'Centimeters',
-                allowedUnits: ['Centimeters', 'Meters', 'Feet', 'Miles', 'Percent']
+                units: 'Percent',
+                allowedUnits: ['Percent']
             });
 
             library.set('fingerUsage', {
