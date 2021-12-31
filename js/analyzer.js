@@ -745,7 +745,7 @@ KLA.Analyzer = (function() {
         }
         
         // put it all together!
-        var consecHandWeight = 0, consecFingerWeight = .3, fingerUsageWeight = .2, distWeight = .5;
+        var consecHandWeight = .17, consecFingerWeight = .25, fingerUsageWeight = .18, distWeight = .4;
         results.finalList = [];
         for (ii = 0; ii < len; ii++) {
             results.finalList[ii] = {};
